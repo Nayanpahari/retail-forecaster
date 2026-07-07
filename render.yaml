@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: retail-forecaster-api
+    runtime: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: MODEL_DIR
+        value: /opt/render/project/src/backend/models
+      - key: DATASET_DIR
+        value: /opt/render/project/src/datasets
+      - key: PYTHON_VERSION
+        value: 3.11.0
