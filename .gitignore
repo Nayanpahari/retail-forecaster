@@ -21,3 +21,6 @@ reports/*.png
 venv/
 lightning_logs/
 *.log
+
+models/ppo_extracted/
+models/evaluation_results.json
